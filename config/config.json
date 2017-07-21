@@ -1,0 +1,7 @@
+{
+  "development": {
+    "PORT": 3000,
+    "MONGODB_URI": "mongodb://localhost:27017/LearningMongo"
+    // "JWT_SECRET": "dn8393nksld094n230fdhs93"
+  }
+}
