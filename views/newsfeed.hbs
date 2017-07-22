@@ -1,0 +1,19 @@
+<main class="container">
+
+  {{#each this.doc}}
+
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+      <img class="media-object" src="assets/img/OWlogo.png" alt="Overwatch logo">
+    </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading">{{this.dataValues.title}}</h4>
+      {{this.dataValues.link}}
+    </div>
+  </div>
+
+  {{/each}}
+
+</main>

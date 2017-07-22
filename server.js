@@ -23,7 +23,13 @@ const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
 
-app.post('/news', (req, res) => {
+var exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+
+// UNHANDLED PROMISE - ERR!! 
+app.get('/news', (req, res) => {
 
   scrapeNews.then((result) => {
 
@@ -34,7 +40,8 @@ app.post('/news', (req, res) => {
       });
 
       article.save().then((doc) => {
-        res.send(doc)
+        // res.send(doc);
+        res.render('newsfeed', doc);
       }, (e) => {
         res.status(400).send(e);
       })
@@ -150,6 +157,18 @@ app.patch('/users/:id', (req, res) => {
   //   body.completedAt = null;
   // }
 
+});
+
+app.get('/', (req, res) => {
+  Article.find().then((allArticles) => {
+    var articleToRender = {
+      'Article': allArticles
+    };
+
+    res.render('newsfeed', articleToRender);
+  }, (e) => {
+    res.status(400).send(e);
+  })
 });
 
 app.listen(port, () => {
