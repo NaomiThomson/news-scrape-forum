@@ -5,9 +5,11 @@
   "main": "server.js",
   "dependencies": {
     "body-parser": "^1.17.2",
+    "cheerio": "^1.0.0-rc.2",
     "express": "^4.15.3",
     "lodash": "^4.15.0",
-    "mongoose": "^4.11.3"
+    "mongoose": "^4.11.3",
+    "request": "^2.81.0"
   },
   "engines": {
     "node": "8.1.4"

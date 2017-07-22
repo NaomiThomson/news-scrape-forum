@@ -108,7 +108,7 @@ app.patch('/users/:id', (req, res) => {
   //   body.completedAt = null;
   // }
 
-})
+});
 
 app.listen(port, () => {
   console.log(`started up at port ${port}`);
