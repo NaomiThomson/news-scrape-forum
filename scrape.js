@@ -41,12 +41,13 @@ var scrapeNews = new Promise((resolve, reject) => {
 
 
 // this worked, so promise works
-scrapeNews.then((result) => {
-  console.log(result)
-}, (err) => {
-  console.log(err)
-});
+// scrapeNews.then((result) => {
+//   console.log(result)
+// }, (err) => {
+//   console.log(err)
+// });
 
+module.exports = (scrapeNews);
 
 
 
