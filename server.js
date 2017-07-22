@@ -7,11 +7,15 @@ const {ObjectID} = require('mongodb');
 // local imports
 var {mongoose} = require('./db/mongoose');
 var {User} = require('./models/user');
+var {rez} = require('./scrape');
 
 var app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
+
+console.log(rez);
 
 // creates new user
 app.post('/users', (req, res) => {
