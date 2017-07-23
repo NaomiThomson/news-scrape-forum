@@ -9,6 +9,7 @@
     "express": "^4.15.3",
     "express-handlebars": "^3.0.0",
     "lodash": "^4.15.0",
+    "materialize-css": "^0.100.1",
     "mongoose": "^4.11.3",
     "request": "^2.81.0"
   },
