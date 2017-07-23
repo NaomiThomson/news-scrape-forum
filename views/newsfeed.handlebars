@@ -2,15 +2,16 @@
 
   {{#each news}}
 
-  <div class="media">
-    {{!--<div class="media-left">
-      <a href="#">
-      <img class="media-object" src="assets/img/OWlogo.png" alt="Overwatch logo">
-    </a>
-    </div>--}}
-    <div class="media-body">
-      <h4 class="media-heading">{{this.title}}</h4>
-      {{this.link}}
+  <div class="row">
+    <div class="col s12 m12">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title">{{this.title}}</span>
+        </div>
+        <div class="card-action">
+          <a href="{{this.link}}">{{this.link}}</a>
+        </div>
+      </div>
     </div>
   </div>
 

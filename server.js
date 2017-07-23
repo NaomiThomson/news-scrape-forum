@@ -17,12 +17,14 @@ var {
 var {
   Article
 } = require('./models/article');
-var scrapeNews = require('./views/assets/js/scrape');
+var scrapeNews = require('./public/assets/js/scrape');
 
 var app = express();
 const port = process.env.PORT || 3000;
 
 app.use(bodyParser.json());
+
+app.use(express.static(__dirname + '/public'));
 
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
