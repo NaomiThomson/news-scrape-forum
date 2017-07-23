@@ -1,16 +1,16 @@
 <main class="container">
 
-  {{#each this.doc}}
+  {{#each news}}
 
   <div class="media">
-    <div class="media-left">
+    {{!--<div class="media-left">
       <a href="#">
       <img class="media-object" src="assets/img/OWlogo.png" alt="Overwatch logo">
     </a>
-    </div>
+    </div>--}}
     <div class="media-body">
-      <h4 class="media-heading">{{this.dataValues.title}}</h4>
-      {{this.dataValues.link}}
+      <h4 class="media-heading">{{this.title}}</h4>
+      {{this.link}}
     </div>
   </div>
 
