@@ -12,9 +12,11 @@
 // });
 
 
-$('.save-note').click((event) => { 
+$('#save-note').click((event) => { 
+  
+  var thisId = $(event.target).data('id');
 
-  var thisId = $(this).attr('data-id');
+  console.log(thisId);
 
   axios.post(`/notes/${thisId}`, {
     title: $('#title-input').val().trim(),
@@ -32,11 +34,7 @@ $('.save-note').click((event) => {
 
 });
 
-// $('.edit-note').click(() => {
-//   console.log('edit');
-//   $('.modal').modal();
-//   $('#modal1').modal('open');
-// })
+
 
 $(document).ready(function(){
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
@@ -44,10 +42,15 @@ $(document).ready(function(){
 });
 
 
-// $('.save-article').click((event) => {
-//   var thisId = $(this).attr('data-id');
+$('.save-article').click((event) => {
+  // var thisId = $(this).attr('data-id');
+  var thisId = $(event.target).data('id');
+  // var target = $(event.target);
 
-//   axios.post(`/articles/${thisId}`, {
+  axios.post(`/articles/${thisId}`, {
+    saved: true
+  })
+
+  console.log('saved to' + thisId);
     
-//   })
-// })
+})

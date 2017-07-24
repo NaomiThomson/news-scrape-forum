@@ -80,43 +80,86 @@ app.get('/bookmarks', (req, res) => {
   });
 });
 
+// Get notes 
+app.get('/notes', (req, res) => {
+  var entry = new Note(res);
+
+  entry.save((err, doc) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(doc);
+    }
+  })
+});
+
+// Get note by ID
+app.get('/notes/:id', (req, res) => {
+  
+  var entry = new Note(res);
+
+  entry.save((err, doc) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(doc);
+    }
+  })
+
+})
+
 
 // Grab article by ObjectId
 app.get('/articles/:id', (req, res) => {
-  Article.findOne({'_id': req.params.id})
-  .populate('note')
-  .exec((err, doc) => {
-    if (err) {
-      res.status(400).send(err)
-    }
-    else {
-      res.json(doc)
-    }
-  });
+  // Article.findOne({'_id': req.params.id})
+  // .populate('note')
+  // .exec((err, doc) => {
+  //   if (err) {
+  //     res.status(400).send(err)
+  //   }
+  //   else {
+  //     res.json(doc)
+  //   }
+  // });
+
+  console.log('222222222222222' + res)
 });
 
 // Create a new note or replace an existing note
 app.post('/articles/:id', (req, res) => {
 
-  var newNote = new Note(req.body);
+  // var newNote = new Note(req.body);
 
-  newNote.save((error, doc) => {
-    if (error) {
-      res.status(400).send(error)
+  // newNote.save((error, doc) => {
+  //   if (error) {
+  //     res.status(400).send(error)
+  //   }
+  //   else {
+
+  //     Article.findOneAndUpdate({'_id': req.params.id}, {'note': doc._id})
+  //     .exec((err, doc) => {
+  //       if (err) {
+  //         res.status(400).send(err)
+  //       }
+  //       else {
+  //         res.send(doc)
+  //       }
+  //     })
+  //   }
+  // })
+
+  Article.findOneAndUpdate({'_id': req.params.id}, {'saved': res.req.body.saved})
+  .exec((err, doc) => {
+    if (err) {
+      res.status(400).send(err)
     }
     else {
-
-      Article.findOneAndUpdate({'_id': req.params.id}, {'note': doc._id})
-      .exec((err, doc) => {
-        if (err) {
-          res.status(400).send(err)
-        }
-        else {
-          res.send(doc)
-        }
-      })
+      console.log(doc)
+      res.send(doc)
     }
   })
+
+  // console.log('111111111111111' + res.req.body.saved);
 })
 
 

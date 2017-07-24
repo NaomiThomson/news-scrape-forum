@@ -8,10 +8,10 @@
         <div class="card-content white-text">
           <span class="card-title">{{this.title}}</span>
           <a class="btn-floating btn-large waves-effect waves-light orange delete-article"><i class="material-icons">delete</i></a>
-          <a class="btn-floating btn-large waves-effect waves-light orange edit-note modal-trigger" href="#modal1"><i class="material-icons">mode_edit</i></a>
+          <a class="btn-floating btn-large waves-effect waves-light orange edit-note modal-trigger" href="#{{this._id}}"><i class="material-icons">mode_edit</i></a>
         </div>
         <div class="card-action">
-          <a href="{{this.link}}">{{this.link}}</a>
+          <a data-id={{this._id}} href="{{this.link}}">{{this.link}}</a>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
 
 
 <!-- Modal Structure -->
-<div id="modal1" class="modal">
+<div id="{{this._id}}" class="modal">
   <div class="modal-content">
     <h4>New Note</h4>
 
@@ -42,7 +42,7 @@
   </div>
   </div>
   <div class="modal-footer">
-    <a href="#modal1" class=" modal-action modal-close waves-effect waves-green btn-flat" id="save-note">Save Note</a>
+    <a href="#{{this._id}}" data-id="{{this._id}}" class=" modal-action modal-close waves-effect waves-green btn-flat" id="save-note">Save Note</a>
   </div>
 </div>
 
