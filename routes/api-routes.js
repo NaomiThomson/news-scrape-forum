@@ -6,6 +6,10 @@ var {Article} = require('../models/article');
 
 module.exports = app => {
 
+app.get('/', (req, res) => {
+  res.redirect('/articles')
+});
+
 // GET request to scrape Overwatch news
 app.get('/scrape', (req, res) => {
 
