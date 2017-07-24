@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var User = mongoose.model('User', {
   email: {
     type: String,
+    unique: true,
     required: true,
     trim: true,
     minlength: 1

@@ -3,60 +3,85 @@ const _ = require('lodash');
 const express = require('express');
 const exphbs = require("express-handlebars");
 const bodyParser = require('body-parser');
-const {
-  ObjectID
-} = require('mongodb');
+const {ObjectID} = require('mongodb');
 
 // local imports
-var {
-  mongoose
-} = require('./db/mongoose');
-var {
-  User
-} = require('./models/user');
-var {
-  Article
-} = require('./models/article');
-var scrapeNews = require('./public/assets/js/scrape');
+var {mongoose} = require('./db/mongoose');
+var {User} = require('./models/user');
+var {Article} = require('./models/article');
+
 
 var app = express();
 const port = process.env.PORT || 3000;
 
+// Data parsing setup ========================
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.text());
+app.use(bodyParser.json({ type: "application/*+json" }));
 
+// Static directory ===========================
 app.use(express.static(__dirname + '/public'));
 
 
+// Handlebars setup ============================
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+// Routes ======================================
+// require("./routes/html-routes.js")(app);
+require("./routes/api-routes.js")(app);
 
-// UNHANDLED PROMISE - ERR!! 
+//scrapeRoute
+  //should check for duplicates,
+  //mongoose can easily check unique, check for unique titles
+  //and it should save to db
+// app.get('/scrape-news', (req, res) => {
+
+//   console.log(res.body);
+
+// ); 
+
+// });
+
+//GET data
+  //seperate from render GET
+
+//GET route. only purpose is to render 
+  //**ur MIGHT need middleware */
+  // first, makes call to GET DATA and stores in hbs to be rendered
+  //render hbs
+  //-----------
+  //button to scrape
+  //displays data
+  //button to save article that makes the POST call below
+
+//POST route that takes {articleId, userId}
+  //user should have an array calle "saved"
+  //find user doc by id, then push articleId to the array
+  
+
+
+// // get scraped news and render to home page 
 app.get('/news', (req, res) => {
-  console.log('getting')
-  scrapeNews
-  .then((result) => {
+ 
+    // res.render('newsfeed', {news: result});
+    res.render('newsfeed');
+})
 
-    for (var i = 0; i < result.length; i++) {
-      var article = new Article({
-        title: result[i].title,
-        link: result[i].link
-      });
 
-      article.save().then(() => {
-        console.log('good');
-      }, (e) => {
-        res.status(400).send(e);
-        console.log('sending error')
-      })
-    };
+// get saved articles and render to bookmarks page 
+app.get('/saved-news', (req, res) => {
+  //have getNews middleware
+  //in getNews, set req.news to the return of GET data route
+  //then in here, we set the hbs to req.news
+  console.log(res);
+  res.send('hi')
+});
 
-    // res.send(result);
-    res.render('newsfeed', {news: result});
-  })
-  .catch((err) => {
-    res.send(err);
-  })
+app.post('/saved-news', (req, res) => {
+  res.send(req.body);
+  console.log(res);
 });
 
 
