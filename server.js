@@ -62,12 +62,12 @@ require("./routes/api-routes.js")(app);
   
 
 
-// // get scraped news and render to home page 
-app.get('/news', (req, res) => {
+// // // get scraped news and render to home page 
+// app.get('/news', (req, res) => {
  
-    // res.render('newsfeed', {news: result});
-    res.render('newsfeed');
-})
+//     // res.render('newsfeed', {news: result});
+//     res.render('newsfeed');
+// })
 
 
 // get saved articles and render to bookmarks page 
@@ -192,17 +192,6 @@ app.patch('/users/:id', (req, res) => {
 
 });
 
-// app.get('/', (req, res) => {
-//   Article.find().then((allArticles) => {
-//     var articleToRender = {
-//       'Article': allArticles
-//     };
-
-//     res.render('newsfeed', articleToRender);
-//   }, (e) => {
-//     res.status(400).send(e);
-//   })
-// });
 
 app.listen(port, () => {
   console.log(`started up at port ${port}`);

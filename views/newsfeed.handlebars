@@ -1,6 +1,6 @@
 <main class="container">
 
-  {{#each news}}
+  {{#each doc}}
 
   <div class="row">
     <div class="col s12 m12">
@@ -10,7 +10,7 @@
           <a class="btn-floating btn-large waves-effect waves-light orange save-article"><i class="material-icons">book</i></a>
         </div>
         <div class="card-action">
-          <a href="{{this.link}}">{{this.link}}</a>
+          <a data-id={{this._id}} href="{{this.link}}">{{this.link}}</a>
         </div>
       </div>
     </div>

@@ -61,7 +61,8 @@ app.get('/articles', (req, res) => {
       res.status(400).send(err);
     }
     else {
-      res.json(doc);
+      // res.json(doc);
+      res.render('newsfeed', doc);
     }
   });
 });
