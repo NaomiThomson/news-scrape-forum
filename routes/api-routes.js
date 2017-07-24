@@ -4,9 +4,7 @@ const path = require('path');
 
 var {Article} = require('../models/article');
 
-
 module.exports = app => {
-
 
 // GET request to scrape Overwatch news
 app.get('/scrape', (req, res) => {
@@ -61,8 +59,8 @@ app.get('/articles', (req, res) => {
       res.status(400).send(err);
     }
     else {
-      // res.json(doc);
-      res.render('newsfeed', doc);
+      // res.send({doc})
+      res.render('newsfeed', {doc});
     }
   });
 });

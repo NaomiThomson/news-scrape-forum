@@ -7,7 +7,7 @@ var Note = mongoose.model('Note', {
     required: true,
     minlength: 1
   }, 
-  link: {
+  boedy: {
     type: String,
     unique: true,
     required: true,
