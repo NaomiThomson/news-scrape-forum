@@ -12,6 +12,10 @@ var Article = mongoose.model('Article', {
     unique: true,
     required: true,
     minlength: 1
+  }, 
+  saved: {
+    type: Boolean,
+    default: false
   }
 })
 

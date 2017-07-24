@@ -9,6 +9,7 @@ const {ObjectID} = require('mongodb');
 var {mongoose} = require('./db/mongoose');
 var {User} = require('./models/user');
 var {Article} = require('./models/article');
+var {Note} = require('./models/note');
 
 
 var app = express();

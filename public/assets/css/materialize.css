@@ -4,8 +4,11 @@
  * MIT License (https://raw.githubusercontent.com/Dogfalo/materialize/master/LICENSE)
  */
 
-.save-article {
+.save-article, 
+.delete-article,
+.edit-note {
   float: right;
+  margin: 3px;
 }
 
 .materialize-red {

@@ -16,7 +16,7 @@ $('.save-note').click((event) => {
 
   var thisId = $(this).attr('data-id');
 
-  axios.post(`/articles/${thisId}`, {
+  axios.post(`/notes/${thisId}`, {
     title: $('#title-input').val().trim(),
     body: $('#body-input').val().trim()
   })
@@ -31,3 +31,23 @@ $('.save-note').click((event) => {
   })
 
 });
+
+// $('.edit-note').click(() => {
+//   console.log('edit');
+//   $('.modal').modal();
+//   $('#modal1').modal('open');
+// })
+
+$(document).ready(function(){
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+});
+
+
+// $('.save-article').click((event) => {
+//   var thisId = $(this).attr('data-id');
+
+//   axios.post(`/articles/${thisId}`, {
+    
+//   })
+// })

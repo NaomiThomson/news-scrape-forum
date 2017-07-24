@@ -66,6 +66,21 @@ app.get('/articles', (req, res) => {
 });
 
 
+// Get articles we scraped from mongoDB
+app.get('/bookmarks', (req, res) => {
+
+  Article.find({saved: true}, (err, doc) => {
+    if (err) {
+      res.status(400).send(err);
+    }
+    else {
+      // res.send({doc})
+      res.render('saved', {doc});
+    }
+  });
+});
+
+
 // Grab article by ObjectId
 app.get('/articles/:id', (req, res) => {
   Article.findOne({'_id': req.params.id})
